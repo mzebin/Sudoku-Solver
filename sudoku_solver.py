@@ -1,6 +1,10 @@
 
 def print_board(board):
-    pass
+    print(board)
+    for row in board:
+        for value in row:
+            print(value, end="|")
+        print()
 
 
 board = [
@@ -14,4 +18,6 @@ board = [
     ["2", " ", " ", " ", " ", " ", "4", " ", "3"],
     [" ", " ", "9", " ", " ", " ", " ", " ", " "],
 ]
+
+print_board(board)
 
