@@ -2,13 +2,13 @@
 def print_board(board):
     for idx1, row in enumerate(board):
         if idx1 % 3 == 0:
-            print("-" * 25)
+            print("-" * 43)
         for idx2, value in enumerate(row):
             if idx2 % 3 == 0:
                 print("| ", end="")
-            print(value + " ", end="")
+            print(" " + value, end="  ")
         print("|")
-    print("-" * 25)
+    print("-" * 43)
 
 
 board = [
