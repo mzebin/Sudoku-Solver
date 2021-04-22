@@ -84,9 +84,9 @@ board = [
 
 print_board(board)
 print()
-print()
+print("-" * 50)
 solve_sudoku(board)
-print()
+print("-" * 50)
 print()
 print_board(board)
 
