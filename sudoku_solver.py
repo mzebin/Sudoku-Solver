@@ -1,4 +1,63 @@
 
+def in_col(board, row, col, digit):
+    for y  in range(len(board)):
+        if board[y][col] == digit:
+            return True
+
+    return False
+
+
+def in_row(board, row, col, digit):
+    for x in range(len(board)):
+        if board[row][x] == digit:
+            return True
+
+    return False
+
+
+def in_box(board, start_row, start_col,   digit):
+    for row in range(3):
+        for col in range(3):
+            if board[row + start_row][col + start_col] == digit:
+                return True
+
+    return False
+
+
+def is_valid_spot(board, row, col, digit):
+    return not in_row(board, row, col, digit) and \
+            not in_col(board, row, col, digit) and \
+            not in_box(board, row - row % 3, col - col % 3, digit)
+
+
+def get_empty_spot(board):
+    for row in range(len(board)):
+        for col in range(len(board)):
+            if board[row][col] == "_":
+                return row, col
+
+    return -1, -1
+
+
+def solve_sudoku(board):
+    row, col = get_empty_spot(board)
+    
+    if row == col == -1:
+        return True
+
+    for digit in range(1, 10):
+        digit = str(digit)
+        if is_valid_spot(board, row, col, digit):
+            board[row][col] = digit
+
+            if solve_sudoku(board):
+                return True
+
+            board[row][col] = "_"
+
+    return False
+
+
 def print_board(board):
     for idx1, row in enumerate(board):
         if idx1 % 3 == 0:
@@ -23,5 +82,11 @@ board = [
     ["_", "_", "9", "_", "_", "_", "_", "_", "_"],
 ]
 
+print_board(board)
+print()
+print()
+solve_sudoku(board)
+print()
+print()
 print_board(board)
 
